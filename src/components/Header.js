@@ -17,6 +17,7 @@ const Header = () => (
     <header style={HeaderStyle}>
         <h1 style={title}>Find Me A Film!</h1>
     </header>
+    
 );
 
 export default Header;
