@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Selection from './Selection';
 import Slider from './Slider';
+import SearchButton from './SearchButton';
 
 const navigationStyle = {
     flexBasis: '20%',
@@ -11,17 +12,15 @@ const navigationStyle = {
 
 export default class Navigation extends Component {
     
-    componentDidMount() {
-        const apiKey = process.env.REACT_APP_TMDB_API_KEY
-        const apiUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-gb`        
-        fetch (apiUrl) 
+    componentDidMount() {        
+        fetch (this.props.url) 
             .then(response => response.json())
             .then(data => this.props.setGenres(data.genres))  
             .catch(error => console.log(error));
     }
 
     render() {
-        const { genre, genres, onGenreChange, onChange, year, rating, runtime } = this.props;
+        const { genre, genres, onGenreChange, onChange, year, rating, runtime, onSearchButtonClick } = this.props;
         return (
             <section style={navigationStyle}>
                 <Selection 
@@ -34,6 +33,7 @@ export default class Navigation extends Component {
                 <Slider data={rating} onChange={onChange}/>
                 <Slider data={runtime} onChange={onChange}/>                
 
+                <SearchButton onClick={onSearchButtonClick} />
             </section>
             
         )
