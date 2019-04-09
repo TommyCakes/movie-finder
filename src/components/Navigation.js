@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Selection from './Selection'
 const navigationStyle = {
     flexBasis: '20%',
     minWidth: 300,
@@ -7,10 +7,22 @@ const navigationStyle = {
 }
 
 export default class Navigation extends Component {
+    state = {
+        genre: "horror"
+    }
+
+    onGenreChange = event => {
+        this.setState({ genre: event.target.value });
+    }
+
     render() {
         return (
             <section style={navigationStyle}>
-                Navigation
+                <h2>Navigation</h2>
+                <Selection 
+                    genre={this.state.genre}
+                    onGenreChange={this.onGenreChange}
+                />
             </section>
         )
     }
