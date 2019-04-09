@@ -46,12 +46,17 @@ export default class Main extends Component {
         });
     };
 
+    setGenres = genres => {
+        this.setState({ genres });
+    }
+
     render() {
         return (
             <section style={mainStyle}>
                 <Navigation 
                     onChange={this.onChange}
                     onGenreChange={this.onGenreChange}
+                    setGenres={this.setGenres}
                     {...this.state}/>
                 <Movies />
             </section>

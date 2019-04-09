@@ -13,11 +13,10 @@ export default class Navigation extends Component {
     
     componentDidMount() {
         const apiKey = process.env.REACT_APP_TMDB_API_KEY
-        const apiUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-gb`
-
+        const apiUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-gb`        
         fetch (apiUrl) 
             .then(response => response.json())
-            .then(data => this.storeGenres(data))  
+            .then(data => this.props.setGenres(data.genres))  
             .catch(error => console.log(error));
     }
 

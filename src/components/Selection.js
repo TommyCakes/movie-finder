@@ -21,7 +21,8 @@ const selection = {
 
 const Selection = ({ genre, genres, onGenreChange }) =>  (
     <div style={selection}>
-        <select value={genre} onChange={onGenreChange} style={select}>
+        <label>Genre</label>
+        <select value={genre} onChange={onGenreChange} style={select}>          
           {
             genres.map( genre => (
               <option key={genre.id} value={genre.name}>
