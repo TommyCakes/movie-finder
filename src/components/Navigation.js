@@ -5,7 +5,8 @@ import Slider from './Slider';
 const navigationStyle = {
     flexBasis: '20%',
     minWidth: 300,
-    padding: 20,
+    padding: 30,
+    marginTop: "1%"
 }
 
 export default class Navigation extends Component {
@@ -68,7 +69,6 @@ export default class Navigation extends Component {
     render() {
         return (
             <section style={navigationStyle}>
-                <h2>Navigation</h2>
                 <Selection 
                     genre={this.state.genre}
                     genres={this.state.genres}
