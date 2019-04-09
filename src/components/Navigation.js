@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Selection from './Selection';
 import Slider from './Slider';
+import SearchButton from './SearchButton';
 
 const navigationStyle = {
     flexBasis: '20%',
@@ -10,75 +11,29 @@ const navigationStyle = {
 }
 
 export default class Navigation extends Component {
-    state = {
-        genre: "horror",
-        genres: [],
-        year: {
-            label: "year",
-            min: 1940,
-            max: 2019,
-            step: 1,
-            value: { min: 2000, max: 2019 }
-        },
-        rating: {
-            label: "rating",
-            min: 0,
-            max: 10,
-            step: 1,
-            value: { min: 7, max: 10 }            
-        },
-        runtime: {
-            label: "runtime",
-            min:0,
-            max: 300,
-            step: 15,
-            value: { min: 120, max: 240 }
-        }
-    }
-
-    componentDidMount() {
-        const apiKey = process.env.REACT_APP_TMDB_API_KEY
-        const apiUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-gb`
-
-        fetch (apiUrl) 
+    
+    componentDidMount() {        
+        fetch (this.props.url) 
             .then(response => response.json())
-            .then(data => this.storeGenres(data))        
+            .then(data => this.props.setGenres(data.genres))  
+            .catch(error => console.log(error));
     }
-
-    storeGenres = data => {
-        const genres = data.genres.map( result => {
-            return result;
-        });
-
-        this.setState({ genres })
-    }
-
-    onGenreChange = event => {
-        this.setState({ genre: event.target.value });
-    }
-
-    onChange = data => {
-        this.setState({
-            [data.type]: {
-                ...this.state[data.type],
-                value: data.value
-            }
-        });
-    };
 
     render() {
+        const { genre, genres, onGenreChange, onChange, year, rating, runtime, onSearchButtonClick } = this.props;
         return (
             <section style={navigationStyle}>
                 <Selection 
-                    genre={this.state.genre}
-                    genres={this.state.genres}
-                    onGenreChange={this.onGenreChange}
+                    genre={genre}
+                    genres={genres}
+                    onGenreChange={onGenreChange}
                 />
 
-                <Slider data={this.state.year} onChange={this.onChange}/>
-                <Slider data={this.state.rating} onChange={this.onChange}/>
-                <Slider data={this.state.runtime} onChange={this.onChange}/>                
+                <Slider data={year} onChange={onChange}/>
+                <Slider data={rating} onChange={onChange}/>
+                <Slider data={runtime} onChange={onChange}/>                
 
+                <SearchButton onClick={onSearchButtonClick} />
             </section>
             
         )

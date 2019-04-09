@@ -21,7 +21,9 @@ const selection = {
 
 const Selection = ({ genre, genres, onGenreChange }) =>  (
     <div style={selection}>
-        <select value={genre} onChange={onGenreChange} style={select}>
+        <label>Genre</label>
+        {console.log(genres)}
+        <select value={genre} onChange={onGenreChange} style={select}> }         
           {
             genres.map( genre => (
               <option key={genre.id} value={genre.name}>
@@ -31,6 +33,6 @@ const Selection = ({ genre, genres, onGenreChange }) =>  (
           }            
         </select>
     </div>
-)
+);
 
 export default Selection;
