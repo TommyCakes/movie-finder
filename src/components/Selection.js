@@ -1,28 +1,29 @@
 import React from 'react';
 
-// .selection {
-//     display: flex;
-//     flex-direction: column;
-//     margin-bottom: 60px;
-//   }
+const selection = {
+    display: "flex",
+    flexDirection: "column",
+    marginBottom: 60,
+  }
   
-//   .selection label {
-//     margin-bottom: 10px;
-//     color: #555;
-//     font-size: 1rem;
-//   }
+  const selectionLabel =  {
+    marginBottom: 10,
+    color: "#555",
+    fontSize: "1rem",
+  }
   
-//   .selection select {
-//     max-width: 150px;
-//   }
+  const select = {
+    maxWidth: 150,
+  }
 
 const Selection = ({ genre, onGenreChange }) =>  (
-
-    <select value={genre} onChange={onGenreChange}>
-        <option value="comedy">Comedy</option>
-        <option value="horror">Horror</option>
-        <option value="drama">Drama</option>
-    </select>
+    <div style={selection}>
+        <select value={genre} onChange={onGenreChange} style={select}>
+            <option style={selectionLabel} value="comedy">Comedy</option>
+            <option style={selectionLabel} value="horror">Horror</option>
+            <option style={selectionLabel} value="drama">Drama</option>
+        </select>
+    </div>
 )
 
 export default Selection;
