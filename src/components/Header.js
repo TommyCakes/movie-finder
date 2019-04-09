@@ -5,12 +5,13 @@ const HeaderStyle = {
     height: 80,
     justifyContent: "center",
     alignItems: "center",
-    borderBottom: "1px solid #a9adac"
+    borderBottom: "1px solid #a9adac",
+    background: "black"
 }
 
 const title = {
   fontSize: "2rem",
-  color: "#2d40ab"
+  color: 'white'
 }
 
 const Header = () => (
