@@ -6,7 +6,8 @@ const movieStyle = {
     flexDirection: "column",
     listStyle: "none",
     boxSizing: "border-box",
-    minWidth: 400,
+    minWidth: 200,
+    minHeight:300,
 	margin: "1.5%",
     border: "1px solid #eee",
     boxShadow: "0 10px 28px -7px"
@@ -27,7 +28,8 @@ const movieDescription = {
 
 const movieDescriptionHeadline = {
     color: "#555",
-	fontWeight: "bold",
+    fontWeight: "bold",
+    fontSize: "1.3em",
 	marginBottom: 20,
 }
 

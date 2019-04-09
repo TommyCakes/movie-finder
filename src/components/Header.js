@@ -10,12 +10,12 @@ const HeaderStyle = {
 
 const title = {
   fontSize: "2rem",
-  color: "#e27a3f"
+  color: "#2d40ab"
 }
 
 const Header = () => (
     <header style={HeaderStyle}>
-        <h1 style={title}>Find Me A Film!</h1>
+        <h1 style={title}>FIND ME A FILM!</h1>
     </header>
     
 );
