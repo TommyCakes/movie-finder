@@ -13,15 +13,22 @@ const selection = {
   }
   
   const select = {
-    maxWidth: 150,
+    maxWidth: "100%",
+    background: "#1c223e",
+    color: "white",
+    height: 40
   }
 
-const Selection = ({ genre, onGenreChange }) =>  (
+const Selection = ({ genre, genres, onGenreChange }) =>  (
     <div style={selection}>
         <select value={genre} onChange={onGenreChange} style={select}>
-            <option style={selectionLabel} value="comedy">Comedy</option>
-            <option style={selectionLabel} value="horror">Horror</option>
-            <option style={selectionLabel} value="drama">Drama</option>
+          {
+            genres.map( genre => (
+              <option key={genre.id} value={genre.name}>
+                  {genre.name}
+              </option>
+            ))
+          }            
         </select>
     </div>
 )
