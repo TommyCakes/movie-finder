@@ -10,8 +10,8 @@ const mainStyle = {
 
 export default class Main extends Component {
     state = {        
-        url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`,
-        moviesUrl: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
+        url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-GB`,
+        moviesUrl: `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-GB&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
         genre: "Comedy",
         genres: [],
         year: {
