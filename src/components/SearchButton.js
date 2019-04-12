@@ -5,7 +5,7 @@ const buttonStyle = {
     maxWidth: "100%",
     background: "#1c223e",
     color: "white",
-    height: 40
+    height: 40,
     width: "100%",
     borderRadius: 5
 }

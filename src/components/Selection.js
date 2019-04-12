@@ -19,7 +19,7 @@ const selection = {
     height: 40
   }
 
-const Selection = ({ genre, genres, onGenreChange }) =>  (
+const Selection = ({ genre, genres, onGenreChange, onValueChange }) =>  (
     <div style={selection}>
         <label>Genre</label>
         {console.log(genres)}

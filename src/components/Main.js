@@ -39,6 +39,7 @@ export default class Main extends Component {
 
     onGenreChange = event => {
         this.setState({ genre: event.target.value });
+        this.generateUrl();
     }
 
     setGenres = genres => {
@@ -88,7 +89,7 @@ export default class Main extends Component {
                     onChange={this.onChange}
                     onGenreChange={this.onGenreChange}
                     setGenres={this.setGenres}
-                    onSearchButtonClick={this.onSearchButtonClick}                    
+                    onSearchButtonClick={this.onSearchButtonClick}                
                     {...this.state} />
                 <Movies url={this.state.moviesUrl}/>
             </section>

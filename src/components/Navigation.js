@@ -20,7 +20,7 @@ export default class Navigation extends Component {
     }
 
     render() {
-        const { genre, genres, onGenreChange, onChange, year, rating, runtime, onSearchButtonClick } = this.props;
+        const { genre, genres, onGenreChange, onChange, year, rating, runtime, onSearchButtonClick, onValueChange } = this.props;
         return (
             <section style={navigationStyle}>
                 <Selection 
