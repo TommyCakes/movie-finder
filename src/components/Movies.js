@@ -34,9 +34,9 @@ const Movies = ({
           }
       </ul>
       <div style={paginationStyle}>
-        <Button onClick={onPageDecrease}> Prev </Button>
+        <Button onClick={onPageDecrease} color="#ec15a0"> Prev </Button>
         <span>{`Page: ${page}`}</span>
-        <Button onClick={onPageIncrease}> Next </Button>
+        <Button onClick={onPageIncrease} color="#ec15a0"> Next </Button>
       </div>
   </section>
 )

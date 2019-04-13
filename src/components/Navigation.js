@@ -33,7 +33,9 @@ export default class Navigation extends Component {
                 <Slider data={rating} onChange={onChange}/>
                 <Slider data={runtime} onChange={onChange}/>                
 
-                <Button onClick={onSearchButtonClick}>
+                <Button 
+                    onClick={onSearchButtonClick}
+                    color="#1c223e">
                     Search
                 </Button>
             </section>

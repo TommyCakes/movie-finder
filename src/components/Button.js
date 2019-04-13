@@ -2,18 +2,17 @@ import React from 'react';
 
 
 const buttonStyle = {
-    maxWidth: "100%",
-    background: "#1c223e",
+    maxWidth: "100%",    
     color: "white",
     height: 40,
     width: "100%",
     borderRadius: 5
 }
 
-const Button = ({ onClick, children }) => (
+const Button = ({ onClick, color, children }) => (
     <div>
         <button 
-            style={buttonStyle} 
+            style={{...buttonStyle, background: color}}
             onClick={onClick}>
             { children }
         </button>
