@@ -10,10 +10,14 @@ const buttonStyle = {
     borderRadius: 5
 }
 
-const SearchButton = ({ onClick }) => (
+const Button = ({ onClick, children }) => (
     <div>
-        <button style={buttonStyle} onClick={onClick}>Search</button>
+        <button 
+            style={buttonStyle} 
+            onClick={onClick}>
+            { children }
+        </button>
     </div>
 )
 
-export default SearchButton;
+export default Button;

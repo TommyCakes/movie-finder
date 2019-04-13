@@ -1,6 +1,6 @@
 import React from "react";
 import MovieListItem from './MovieListItem';
-
+import Button from './Button';
 
 const moviesStyle = {
     flexBasis: "80%",
@@ -10,54 +10,36 @@ const moviesStyle = {
     margin: 0,    
 }
 
-export default class Movies extends React.Component {
-  state = {
-    movies: []
-  };
-
-  componentDidMount() {
-      this.fetchMovies(this.props.url);
-  }
-
-  componentWillReceiveProps(nextProps) {
-      if (this.props.url !== nextProps.url) {
-          this.fetchMovies(nextProps.url);
-      }
-  }
-
-  fetchMovies = (url) => {
-      fetch(url)
-          .then(response => response.json())
-          .then(data => this.storeMovies(data))
-          .catch(error => console.log(error))
-  }
-
-  storeMovies = data => {
-      const movies = data.results.map( result => {
-          const  { vote_count, id, genre_ids, poster_path, title, vote_average, release_date } = result;
-          return { vote_count, id, genre_ids, poster_path, title, vote_average, release_date };
-      });
-
-      this.setState({ movies })
-  }
-
-  render() {
-      return (
-          <section>
-              <ul style={moviesStyle}>
-                  {
-                      this.state.movies.map(movie =>  {                    
-                          return (
-                              <MovieListItem
-                                  key={movie.id}
-                                  movie={movie}
-                              />                          
-                          )
-                      }) 
-                  }
-              </ul>
-          </section>
-      )
-  }
+const paginationStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  padding: "40px 20px"
 }
+
+const Movies = ({
+  movies, 
+  page,
+  onPageIncrease,
+  onPageDecrease
+}) => (
+  <section>
+      <ul style={moviesStyle}>
+          {
+              movies.map(movie =>  (                   
+                      <MovieListItem
+                          key={movie.id}
+                          movie={movie}
+                      />                          
+              ))
+          }
+      </ul>
+      <div style={paginationStyle}>
+        <Button onClick={onPageDecrease}> Prev </Button>
+        <span>{`Page: ${page}`}</span>
+        <Button onClick={onPageIncrease}> Next </Button>
+      </div>
+  </section>
+)
+
+export default Movies;
 

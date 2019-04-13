@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Selection from './Selection';
 import Slider from './Slider';
-import SearchButton from './SearchButton';
+import Button from './Button';
 
 const navigationStyle = {
     flexBasis: '20%',
@@ -33,7 +33,9 @@ export default class Navigation extends Component {
                 <Slider data={rating} onChange={onChange}/>
                 <Slider data={runtime} onChange={onChange}/>                
 
-                <SearchButton onClick={onSearchButtonClick} />
+                <Button onClick={onSearchButtonClick}>
+                    Search
+                </Button>
             </section>
             
         )
