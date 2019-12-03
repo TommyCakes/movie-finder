@@ -19,15 +19,7 @@
     padding: 20px 0;
     list-style: none;
   }
-  .movie-container:hover .movie-item {
-    transform: translateX(-5%);
-  }
-  .movie-item:hover {
-    transform: scale(1.5);
-  }
-  .movie-item:hover img {
-    width:130%;
-  }
+
   .movie-item {
     flex-basis: 30%;
     display: flex;
@@ -41,11 +33,24 @@
   }
   .movie-img {
     width: 100%;
-    transition:1s all;
+    transition:0.6s all;
   }
-  .movie-item:hover ~ .movie-item {
-    transform: translateX(20%);
+  @media screen and (min-width: 671px){
+    .movie-container:hover .movie-item {
+      transform: translateX(-5%);
+    }
+    .movie-item:hover {
+      transform: scale(1.5);
+    }
+    .movie-item:hover img {
+      width:130%;
+      opacity: 0.8;
+    }
+    .movie-item:hover ~ .movie-item {
+      transform: translateX(20%);
+    }
   }
+
   @media screen and (max-width: 670px){
     .main-container {
       flex-direction: column;           

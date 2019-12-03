@@ -12,11 +12,18 @@ const navigationStyle = {
 }
 
 export default class Navigation extends Component {
-    
-    componentDidMount() {        
+    constructor(props) {
+        super(props);
+        this.state = {
+            done: false
+        }
+    }
+
+    componentDidMount() {                
         fetch (this.props.url) 
             .then(response => response.json())
-            .then(data => this.props.setGenres(data.genres))  
+            .then(data => this.props.setGenres(data.genres)) 
+            .then(json => this.setState({ done: true })) 
             .catch(error => console.log(error));
     }
 
@@ -34,11 +41,11 @@ export default class Navigation extends Component {
                 <Slider data={rating} onChange={onChange}/>
                 <Slider data={runtime} onChange={onChange}/>                
 
-                <Button 
+                {/* <Button 
                     onClick={onSearchButtonClick}
                     color="#1c223e">
                     Search
-                </Button>
+                </Button> */}
             </section>
             
         )
