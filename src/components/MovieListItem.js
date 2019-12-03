@@ -8,7 +8,7 @@ const movieStyle = {
     boxSizing: "border-box",
     minWidth: 300,
     minHeight:300,
-	margin: "1.5%",
+	margin: "0.5%",
     border: "1px solid #eee",
     boxShadow: "0 10px 28px -7px"
 }
