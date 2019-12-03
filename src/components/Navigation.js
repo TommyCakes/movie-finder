@@ -7,7 +7,8 @@ const navigationStyle = {
     flexBasis: '20%',
     minWidth: 300,
     padding: 30,
-    marginTop: "1%"
+    marginTop: "1%",
+    top:'65px',    
 }
 
 export default class Navigation extends Component {

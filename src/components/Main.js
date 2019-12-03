@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import Navigation from './Navigation';
 import Movies from './Movies';
-
+import '../index.css'
 const apiKey = process.env.REACT_APP_TMDB_API_KEY;
-
-const mainStyle = {
-    display: "flex"
-}
 
 export default class Main extends Component {
     state = {       
@@ -139,7 +135,7 @@ export default class Main extends Component {
     }
     render() {
         return (
-            <section style={mainStyle}>
+            <section className="main-container">
                 <Navigation 
                     genres={this.state.genres}
                     onChange={this.onChange}

@@ -3,7 +3,7 @@ import React from 'react';
 const selection = {
     display: "flex",
     flexDirection: "column",
-    marginBottom: 60,
+    marginBottom: 60,    
   }
   
   const selectionLabel =  {
