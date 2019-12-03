@@ -1,9 +1,5 @@
 import React from 'react';
 
-const movieImg = {
-    width: "100%"
-}
-
 const movieDescription = {
     display: "flex",
     flexGrow: 1,
@@ -58,7 +54,7 @@ const MovieListItem = ({ movie }) => {
         <li key={id} className="movie-item">
             <img src={imgUrl} 
                  alt={title} 
-                 style={movieImg}/>
+                 className="movie-img"/>
             <div style={movieDescription}>
                 <h2 style={movieDescriptionHeadline}>{title}</h2>
                 <section style={movieDetails}>
