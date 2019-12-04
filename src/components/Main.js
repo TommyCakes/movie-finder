@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import Navigation from './Navigation';
 import Movies from './Movies';
-
+import '../index.css'
 const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 
-const mainStyle = {
-    display: "flex"
-}
-
 export default class Main extends Component {
-    state = {       
+    state = {   
+        done: false,    
         page: 1, 
         total_pages: 1,
         url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-GB`,
@@ -41,15 +38,18 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-        this.fetchMovies(this.state.moviesUrl);
+        setTimeout(() => {
+            this.fetchMovies(this.state.moviesUrl);
+        }, 1200);        
     }
 
     componentWillUpdate(nextProps, nextState) {
-        if (this.state.moviesUrl !== nextState.moviesUrl) {
-            this.fetchMovies(nextState.moviesUrl);
+        if (this.state.moviesUrl !== nextState.moviesUrl) {        
+            this.fetchMovies(this.state.moviesUrl);
         }
-        if (this.state.page !== nextState.page) {
-            this.generateUrl();
+        
+        if (this.state.page !== nextState.page) {            
+            this.generateUrl();            
         }
     } 
 
@@ -62,19 +62,22 @@ export default class Main extends Component {
         this.setState({ genres });
     }
 
-    onChange = data => {
+    onChange = data => {        
         this.setState({
             [data.type]: {
                 ...this.state[data.type],
                 value: data.value
             }
         });
+        this.generateUrl();
     };
 
     fetchMovies = (url) => {
+        this.setState({ done: false })
         fetch(url)
             .then(response => response.json())
             .then(data => this.storeMovies(data))
+            .then(json => this.setState({ done: true }))
             .catch(error => console.log(error))
     }
   
@@ -113,6 +116,7 @@ export default class Main extends Component {
             `page=${page}`;
         
         this.setState({ moviesUrl });
+        
     }
 
     onSearchButtonClick = () => {
@@ -137,23 +141,27 @@ export default class Main extends Component {
             this.setState({ page: previousPage })
         }
     }
+
     render() {
         return (
-            <section style={mainStyle}>
+            <section className="main-container">                
                 <Navigation 
                     genres={this.state.genres}
                     onChange={this.onChange}
                     onGenreChange={this.onGenreChange}
                     setGenres={this.setGenres}
-                    onSearchButtonClick={this.onSearchButtonClick}                
+                    /* onSearchButtonClick={this.onSearchButtonClick}*/
                     {...this.state} />
-                <Movies 
+                    { !this.state.done ? (
+                    <h1>Loading...</h1>
+                ) : (
+                    <Movies 
                     movies={this.state.movies} 
                     page={this.state.page}
                     onPageIncrease={this.onPageIncrease}
                     onPageDecrease={this.onPageDecrease}
-                />
-
+                    />
+                )}                
             </section>
         )
     }

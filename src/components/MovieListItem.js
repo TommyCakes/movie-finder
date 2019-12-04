@@ -1,22 +1,5 @@
 import React from 'react';
 
-const movieStyle = {
-    flexBasis: "22%",
-    display: "flex",
-    flexDirection: "column",
-    listStyle: "none",
-    boxSizing: "border-box",
-    minWidth: 300,
-    minHeight:300,
-	margin: "1.5%",
-    border: "1px solid #eee",
-    boxShadow: "0 10px 28px -7px"
-}
-
-const movieImg = {
-    width: "100%"
-}
-
 const movieDescription = {
     display: "flex",
     flexGrow: 1,
@@ -58,12 +41,9 @@ const movieRating = {
 const movieTitle = {
     color: "#aaa",
 	marginBottom: 5,
-	fontSize: "0.65rem",
+	fontSize: "0.5em",
 	fontWeight: "normal",
 }
-
-
-
 
 const MovieListItem = ({ movie }) => {
     const { id, title, poster_path, release_date, vote_average } = movie;
@@ -71,10 +51,10 @@ const MovieListItem = ({ movie }) => {
     const year = release_date.substring(0, 4);
 
     return (
-        <li key={id} style={movieStyle}>
+        <li key={id} className="movie-item">
             <img src={imgUrl} 
                  alt={title} 
-                 style={movieImg}/>
+                 className="movie-img"/>
             <div style={movieDescription}>
                 <h2 style={movieDescriptionHeadline}>{title}</h2>
                 <section style={movieDetails}>

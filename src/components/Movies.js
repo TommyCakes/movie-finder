@@ -2,14 +2,6 @@ import React from "react";
 import MovieListItem from './MovieListItem';
 import Button from './Button';
 
-const moviesStyle = {
-    flexBasis: "80%",
-    display: "flex",
-    flexWrap: "wrap",
-    padding: "20px 0",
-    margin: 0,    
-}
-
 const paginationStyle = {
   display: "flex",
   justifyContent: "space-between",
@@ -22,8 +14,8 @@ const Movies = ({
   onPageIncrease,
   onPageDecrease
 }) => (
-  <section>
-      <ul style={moviesStyle}>
+  <section className="movie-wrapper">
+      <ul className="movie-container">
           {
               movies.map(movie =>  (                   
                       <MovieListItem
@@ -33,11 +25,11 @@ const Movies = ({
               ))
           }
       </ul>
-      <div style={paginationStyle}>
+      {/* <div style={paginationStyle}>
         <Button onClick={onPageDecrease} color="#ec15a0"> Prev </Button>
         <span>{`Page: ${page}`}</span>
         <Button onClick={onPageIncrease} color="#ec15a0"> Next </Button>
-      </div>
+      </div> */}
   </section>
 )
 
